@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI Smart Car Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Smart Car Control</h1>
+            <div class="settings-btn" id="settingsBtn">
+                <span class="rune">⚙</span>
+            </div>
+        </header>
+
+        <div class="video-container">
+            <img src="{{ url_for('video_feed') }}" id="videoFeed" alt="Video Feed">
+            <div class="hud">
+                <div class="hud-item speed">Speed: <span id="speedValue">50</span>%</div>
+                <div class="hud-item direction">Direction: <span id="directionValue">Stopped</span></div>
+                <div class="hud-item camera">Camera: <span id="cameraValue">H:80° V:40°</span></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="joystick-container">
+                <div class="joystick left" id="leftJoystick">
+                    <div class="joystick-knob"></div>
+                </div>
+                <div class="joystick-label">Movement</div>
+            </div>
+
+            <div class="joystick-container">
+                <div class="joystick right" id="rightJoystick">
+                    <div class="joystick-knob"></div>
+                </div>
+                <div class="joystick-label">Camera</div>
+            </div>
+        </div>
+
+        <div class="interaction-area">
+            <div class="voice-btn" id="voiceBtn">
+                <span class="rune">🎤</span>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message system">System initialized. AI ready.</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="textCommand" placeholder="Enter command...">
+                    <button id="sendBtn" class="send-btn">
+                        <span class="rune">⟫</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="speed-control">
+                <label for="speedSlider">Speed: <span id="speedSliderValue">50</span>%</label>
+                <input type="range" id="speedSlider" min="10" max="100" value="50">
+            </div>
+        </div>
+
+        <div class="settings-panel" id="settingsPanel">
+            <h2>Settings</h2>
+            <div class="setting-item">
+                <label for="volumeSlider">Voice Volume:</label>
+                <input type="range" id="volumeSlider" min="0" max="100" value="80">
+            </div>
+            <div class="setting-item">
+                <label for="languageSelect">Language:</label>
+                <select id="languageSelect">
+                    <option value="en-US">English</option>
+                    <option value="zh-CN">Chinese</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <button id="requestPermissionsBtn">Request Permissions</button>
+            </div>
+            <div class="setting-item">
+                <button id="closeSettingsBtn">Close</button>
+            </div>
+        </div>
+
+        <div class="autonomous-control">
+            <button id="autonomousBtn" class="autonomous-btn">
+                <span class="rune">⚙</span> Autonomous Mode
+            </button>
+        </div>
+
+        <div class="modal" id="permissionModal">
+            <div class="modal-content">
+                <h2>Permissions Required</h2>
+                <p>This application requires microphone access for voice commands.</p>
+                <p>Please use HTTPS for full functionality.</p>
+                <button id="closeModalBtn">Understood</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/joystick.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

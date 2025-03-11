@@ -1,0 +1,28 @@
+# Core dependencies
+flask==2.3.3
+flask-socketio==5.3.6
+opencv-python==4.8.1.78
+numpy==1.26.0
+smbus2==0.4.3
+gpiozero==2.0.1
+RPi.GPIO==0.7.1
+
+# AI and voice processing
+whisper==1.1.10
+edge-tts==6.1.9
+mpg123==0.4
+
+# For WebRTC video streaming
+aiortc==1.5.0
+aiohttp==3.8.5
+
+# For ROS 2 integration (optional)
+# These should be installed via ROS 2 package manager
+# rclpy
+# sensor_msgs
+# geometry_msgs
+# nav_msgs
+
+# For ORB-SLAM3 (optional)
+# This should be installed separately following ORB-SLAM3 installation instructions
+# https://github.com/UZ-SLAMLab/ORB_SLAM3 
